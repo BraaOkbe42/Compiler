@@ -1,0 +1,34 @@
+public int foo(args>> int: i, j, k): static
+{
+var double: max, min;
+private bool fee(args>> int: l, m, n; float: x, y)
+{
+return true;
+}
+return 0;
+}
+
+public void foo(args>> int: x, y, z; float: f){
+if (x > y) {
+x <- x + y;
+}
+else {
+y <- x + y + z;
+z <- y * 2;
+f <- z;
+}
+}
+private char goo(): static{
+string a[30], b[100] <- “moshe”;
+var char: c;
+var int: i;
+c <- 'e';
+a[19] <- 'f';
+a[4+2] <- 'g';
+b <- a;
+b[3] <- c;
+return 'a';
+}
+
+public int foo() { return 0; }
+public int foo_2() { return 0; }
