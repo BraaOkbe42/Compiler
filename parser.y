@@ -89,7 +89,7 @@ FUNCTION_TYPE   : VOID { $$ = mkleaf("void"); }
                 | INT_POINTER { $$ = mkleaf("int*"); }         
                 | CHAR_POINTER { $$ = mkleaf("char*"); }       
                 | REAL_POINTER { $$ = mkleaf("double*"); }     
-                | BOOL { $$ = mkleaf("bool"); }  /* Added BOOL type */
+                | BOOL { $$ = mkleaf("bool"); }  
                 ;
 
 FUNCTION_BODY   : DECLARATIONS STATEMENTS { $$ = mknode("BODY", $1, $2); }

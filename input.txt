@@ -18,17 +18,9 @@ z <- y * 2;
 f <- z;
 }
 }
-private char goo(): static{
-string a[30], b[100] <- “moshe”;
-var char: c;
-var int: i;
-c <- 'e';
-a[19] <- 'f';
-a[4+2] <- 'g';
-b <- a;
-b[3] <- c;
-return 'a';
-}
+
+
 
 public int foo() { return 0; }
+public int foo_2() { return 0; }
 public int foo_2() { return 0; }
