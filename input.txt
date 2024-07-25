@@ -1,3 +1,4 @@
+
 public int foo(args>> int: i, j, k): static
 {
 var double: max, min;
@@ -24,3 +25,12 @@ f <- z;
 public int foo() { return 0; }
 public int foo_2() { return 0; }
 public int foo_2() { return 0; }
+public int foo_2() {  }
+
+public void main() : static{
+
+}
+
+public void main() : static{
+
+}
