@@ -1086,7 +1086,7 @@ YY_RULE_SETUP
 case 51:
 YY_RULE_SETUP
 #line 67 "scanner.l"
-{return VAR;}   
+{ return VAR; }   
 	YY_BREAK
 case 52:
 YY_RULE_SETUP

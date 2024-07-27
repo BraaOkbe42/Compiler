@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Symbol and Scope Structures
 typedef struct Symbol {
     char *name;
     char *type;
@@ -15,16 +16,19 @@ typedef struct Scope {
 } Scope;
 
 Scope *current_scope = NULL;
-
 void enter_scope();
 void leave_scope();
 int add_symbol(const char *name, const char *type);
 Symbol* check_symbol(const char *name);
 Symbol* find_symbol_in_scope(const char *name, Scope *scope);
-int main_defined = 0; // Global variable to check if main is defined
+int main_defined = 0;
 
 void enter_scope() {
     Scope *new_scope = (Scope *)malloc(sizeof(Scope));
+    if (!new_scope) {
+        fprintf(stderr, "Error: malloc failed in enter_scope\n");
+        exit(EXIT_FAILURE);
+    }
     new_scope->symbols = NULL;
     new_scope->parent = current_scope;
     current_scope = new_scope;
@@ -38,12 +42,24 @@ void leave_scope() {
 
 int add_symbol(const char *name, const char *type) {
     if (find_symbol_in_scope(name, current_scope) != NULL) {
-        return 0; // Symbol already exists in the current scope
+        return 0;
     }
 
     Symbol *new_symbol = (Symbol *)malloc(sizeof(Symbol));
+    if (!new_symbol) {
+        fprintf(stderr, "Error: malloc failed in add_symbol\n");
+        exit(EXIT_FAILURE);
+    }
     new_symbol->name = strdup(name);
+    if (!new_symbol->name) {
+        fprintf(stderr, "Error: strdup failed in add_symbol\n");
+        exit(EXIT_FAILURE);
+    }
     new_symbol->type = strdup(type);
+    if (!new_symbol->type) {
+        fprintf(stderr, "Error: strdup failed in add_symbol\n");
+        exit(EXIT_FAILURE);
+    }
     new_symbol->next = current_scope->symbols;
     current_scope->symbols = new_symbol;
     return 1;
@@ -86,8 +102,6 @@ void print_error(const char* error_message) {
     fprintf(stderr, "Semantic Error: %s at line %d\n", error_message, yylineno);
 }
 
-
-
 typedef struct node {
     char *token;
     struct node *left;
@@ -96,7 +110,15 @@ typedef struct node {
 
 node* mkleaf(char* token) {
     node* newnode = (node*)malloc(sizeof(node));
+    if (!newnode) {
+        fprintf(stderr, "Error: malloc failed in mkleaf\n");
+        exit(EXIT_FAILURE);
+    }
     newnode->token = strdup(token);
+    if (!newnode->token) {
+        fprintf(stderr, "Error: strdup failed in mkleaf\n");
+        exit(EXIT_FAILURE);
+    }
     newnode->left = NULL;
     newnode->right = NULL;
     return newnode;
@@ -451,9 +473,6 @@ STRING_DECL_LIST
 
 STRING_DECL_ELEM
     : IDENTIFIER '[' INTEGER ']' ASSIGN STRING_LITERAL {
-          if (strcmp($6->token, "string") != 0) {
-              print_error("Array elements must be of type string");
-          }
           $$ = mknode("STRING_ASSIGN", mkleaf($1), mknode("ARRAY", mkleaf($3), mkleaf($6)));
       }
     | IDENTIFIER '[' INTEGER ']' { $$ = mknode("ARRAY_DECL", mkleaf($1), mkleaf($3)); }
@@ -488,7 +507,6 @@ EXPR
     ;
 
 %%
-
 
 int main() {
     yyparse();

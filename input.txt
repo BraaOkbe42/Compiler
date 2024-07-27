@@ -27,10 +27,3 @@ public int foo_2() { return 0; }
 public int foo_2() { return 0; }
 public int foo_2() {  }
 
-public void main() : static{
-
-}
-
-public void main() : static{
-
-}

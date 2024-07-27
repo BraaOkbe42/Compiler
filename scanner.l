@@ -64,7 +64,7 @@ extern char* yytext;
 "-"          { return '-'; }
 "true"       { return BOOL_TRUE; }
 "false"      { return BOOL_FALSE; }
-"var"        {return VAR;}   
+"var"        { return VAR; }   
 
 
 [a-zA-Z_][a-zA-Z0-9_]* { yylval.string = strdup(yytext); return IDENTIFIER; }

@@ -35,8 +35,8 @@
    especially those whose name start with YY_ or yy_.  They are
    private implementation details that can be changed or removed.  */
 
-#ifndef YY_YY_Y_TAB_H_INCLUDED
-# define YY_YY_Y_TAB_H_INCLUDED
+#ifndef YY_YY_PARSER_TAB_H_INCLUDED
+# define YY_YY_PARSER_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -95,49 +95,6 @@ extern int yydebug;
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
-/* Token kinds.  */
-#define YYEMPTY -2
-#define YYEOF 0
-#define YYerror 256
-#define YYUNDEF 257
-#define BOOL 258
-#define CHAR 259
-#define INT 260
-#define STRING 261
-#define FLOAT 262
-#define DOUBLE 263
-#define VOID 264
-#define IF 265
-#define BOOL_TRUE 266
-#define BOOL_FALSE 267
-#define ELSE 268
-#define WHILE 269
-#define FOR 270
-#define VAR 271
-#define MAIN 272
-#define RETURN 273
-#define NULL_ 274
-#define DO 275
-#define PUBLIC 276
-#define PRIVATE 277
-#define STATIC 278
-#define ARGS 279
-#define IDENTIFIER 280
-#define INTEGER 281
-#define FLOAT_LITERAL 282
-#define CHAR_LITERAL 283
-#define STRING_LITERAL 284
-#define INT_POINTER 285
-#define CHAR_POINTER 286
-#define REAL_POINTER 287
-#define FLOAT_POINTER 288
-#define AND 289
-#define OR 290
-#define EQ 291
-#define NE 292
-#define GE 293
-#define LE 294
-#define ASSIGN 295
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -148,7 +105,7 @@ union YYSTYPE
   char* string; 
   struct node* node;
 
-#line 152 "y.tab.h"
+#line 109 "parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -163,4 +120,4 @@ extern YYSTYPE yylval;
 int yyparse (void);
 
 
-#endif /* !YY_YY_Y_TAB_H_INCLUDED  */
+#endif /* !YY_YY_PARSER_TAB_H_INCLUDED  */
